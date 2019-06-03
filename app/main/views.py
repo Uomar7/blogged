@@ -4,7 +4,7 @@ from . import main
 from .forms import UpdateProfile, ReviewForm, BlogForm, CategoryForm, CommentForm
 from flask_login import login_required, current_user
 from ..models import Review, User, Blog, Category, Comments
-
+from ..requests import get_quotes
 
 @main.route('/')
 def index():
@@ -17,7 +17,9 @@ def index():
     allBlogs = Blog.query.all()
     reviewz = Review.query.all()
 
-    return render_template('index.html', title=title, blogs=allBlogs, reviewz=reviewz)
+    quote = get_quotes()
+
+    return render_template('index.html', title=title, quote=quote, blogs=allBlogs, reviewz=reviewz)
 
 
 @main.route('/user/<uname>')
