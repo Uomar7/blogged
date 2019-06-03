@@ -5,9 +5,10 @@ class Config:
     '''
 
     SECRET_KEY = os.environ.get('SECRET_KEY')
+    QUOTE_API_BASE_URL = 'http://quotes.stormconsultancy.co.uk/random.json'
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://king:Uomarearlie1995@localhost/blog1'
+    QUOTE_API_BASE_URL = os.environ.get('QUOTE_API_BASE_URL')
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
-
     # email configurations
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 587

@@ -35,15 +35,6 @@ class User(UserMixin, db.Model):
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-# class PhotoProfile(db.Model):
-#     __tablename__ = 'profile_photos'
-
-#     id = db.Column(db.Integer, primary_key=True)
-#     photo_path = db.Column(db.String())
-#     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-
-
-
 class Blog(db.Model):
     """ 
     List ofs in each category
@@ -62,6 +53,13 @@ class Blog(db.Model):
         '''
         db.session.add(self)
         db.session.commit()
+        
+class Quote:
+
+    def __init__(self, id, author, quote):
+        self.id = id
+        self.author = author
+        self.quote = quote
 
 class Review(db.Model):
 
