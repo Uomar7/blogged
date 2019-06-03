@@ -15,7 +15,7 @@ class User(UserMixin, db.Model):
     bio = db.Column(db.String(255))
     profile_photo_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
-    pitches = db.relationship("Pitch", backref="pitches", lazy="dynamic")
+    blogs = db.relationship("Blog", backref="blogs", lazy="dynamic")
     comments = db.relationship("Review", backref="reviews", lazy="dynamic")
 
     @property
@@ -44,21 +44,21 @@ def load_user(user_id):
 
 
 
-class Pitch(db.Model):
+class Blog(db.Model):
     """ 
-    List of pitches in each category
+    List ofs in each category
     """
-    __tablename__ = 'pitches'
+    __tablename__ = 'blogs'
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     title = db.Column(db.String(255))
-    comment_id = db.relationship("Comments", backref="pitch", lazy="dynamic")
+    comment_id = db.relationship("Comments", backref="blog", lazy="dynamic")
     category_id = db.Column(db.Integer,db.ForeignKey('categories.id'))
 
-    def save_pitch(self):
+    def save_blog(self):
         '''
-         Save the pitches 
+         Save the blogs 
         '''
         db.session.add(self)
         db.session.commit()
@@ -68,8 +68,8 @@ class Review(db.Model):
     __tablename__ = 'reviews'
 
     id = db.Column(db.Integer, primary_key=True)
-    pitch_id = db.Column(db.Integer, db.ForeignKey("pitches.id"))
-    pitch_review = db.Column(db.String)
+    blog_id = db.Column(db.Integer, db.ForeignKey("blogs.id"))
+    blog_review = db.Column(db.String)
     posted = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
@@ -79,7 +79,7 @@ class Review(db.Model):
 
     @classmethod
     def get_reviews(cls, id):
-        reviews_data = Review.query.filter_by(pitch_id=id).all()
+        reviews_data = Review.query.filter_by(blog_id=id).all()
         return reviews_data
 
 
@@ -95,11 +95,11 @@ class Comments(db.Model):
     feedback = db.Column(db.String(255))
     posted = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    pitches_id = db.Column(db.Integer, db.ForeignKey("pitches.id"))
+    blogs_id = db.Column(db.Integer, db.ForeignKey("blogs.id"))
 
     def save_comment(self):
         '''
-        Save the Comments/comments per pitch
+        Save the Comments/comments per blog
         '''
         db.session.add(self)
         db.session.commit()
@@ -107,7 +107,7 @@ class Comments(db.Model):
     @classmethod
     def get_comments(self, id):
         comment = Comments.query.order_by(
-            Comments.time_posted.desc()).filter_by(pitches_id=id).all()
+            Comments.time_posted.desc()).filter_by(blogs_id=id).all()
         return comment
 
 
@@ -118,9 +118,8 @@ class Category(db.Model):
     # table columns
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
-    description = db.Column(db.String(255))
 
-    # save pitches
+    # save blogs
     def save_category(self):
         db.session.add(self)
         db.session.commit()
