@@ -1,11 +1,11 @@
 Hello {{user.username}}
 
-Welcome To Pro-Pitch.
+Welcome To BLOW UP.
 We have just seen you have signed up for our application and want to welcome you to the Pro Fam.
-Enjoy the freedom to pitch your ideas.
+Enjoy the freedom to blog your ideas.
 
 Enjoy
 
 
 By
-Pro-Pitch Team
+BLOW UP Team
