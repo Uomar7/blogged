@@ -1,7 +1,7 @@
-# PRO-PITCH
+# BLOW UP
 
 ## Description
->An interactive pitching website to allow users to view and add various pitches in accordance to category.
+>An interactive blogging website to allow users to view and add various blogs in accordance to category.
 ---
 
 ## Features
@@ -9,9 +9,9 @@
 
 2. Sign up or Sign in to the app.
 
-3. View a list of pitches posted by different users.
+3. View a list of blogs posted by different users.
 
-4. A user can add a comment on a particular pitch.
+4. A user can add a comment on a particular blog
 
 5. Upvote or downvote an app.
 ---
@@ -20,21 +20,21 @@
 
 |Input  | Behaviour | output |
 |------|:-----:|-----|
-|on landing in to the website.|Route to the home page.| Get a welcome note and see a list of already pitched ideas.|
-|On selecting a particular pitch.|routed to that pitch.| User sees comments from other users on that particular pitch.|
+|on landing in to the website.|Route to the home page.| Get a welcome note and see a list of already blogs.|
+|On selecting a particular blog.|routed to that blog.| User sees comments from other users on that particular blog.|
 |On clicking an sign up| routed to that login page| Get a from to login if user doesnt have an account, he or she can register.|
 
 ---
 
 ## Github pages
 
-Access the app files on my [github](https://github.com/Uomar7/pitch.git)
+Access the app files on my [github](https://github.com/Uomar7/blogged.git)
 
 ---
 ## Setup instructions.
 
 * from my github account [Uomar7]()
-* clone this app repo on <https://github.com/Uomar7/pitch.git>
+* clone this app repo on <https://github.com/Uomar7/blogged.git>
 * Install flask `pip intall flask` on your project folder.
 * can make adjustments and run the app by running `./start.sh` command on your terminal.
 
