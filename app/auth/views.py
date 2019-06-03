@@ -18,7 +18,7 @@ def login():
 
         flash('Invalid username or password')
 
-    title = "PITCH-PRO login"
+    title = "BLOW UP login"
     return render_template('auth/login.html', login_form=login_form, title=title)
 
 
@@ -31,7 +31,7 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        mail_message("Welcome to pitch", "email/welcome_user",
+        mail_message("Welcome to BLOW UP", "email/welcome_user",
                      user.email, user=user)
         return redirect(url_for('auth.login'))
         title = "New Account"
