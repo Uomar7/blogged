@@ -1,25 +1,28 @@
-{% extends 'base.html'%}
-{% import 'macros.html' as macro%}
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-
+  <head>
+      {% extends 'base.html'%}
+      {% import 'macros.html' as macro%}
+  
+  {% block styles%}
+  {{ super() }}
+  <link href="https://fonts.googleapis.com/css?family=Advent+Pro&display=swap" rel="stylesheet">
+  {% endblock %}
+  {% block content %}
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
-  {% block styles%}
-      {{ super() }}
-  {% endblock %}
-  {% block content %}
-  <div style="display: flex;justify-content: center; margin-top: 3rem" class="jumbotron">
-  <h2 style="text-align: center;font-family: 'Times New Roman', Times, serif">Welcome To Pro Pitch Family</h2>
+  <main style="font-family: 'Advent Pro'">
+  <div style="display: flex;justify-content: center; margin-top: 3rem" class="text-center">
+  <h2 style="text-align: center;font-family: 'Luckiest Guy', cursive; letter-spacing: 4px; font-size: 3.5em; font-weight: bolder">B<span style="color: crimson">L</span>OW <span style="color: crimson">UP</span></h2>
 </div>
 
      
-    <div style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size: larger" class="container">
+    <div style="font-family:'Advent Pro';font-size: larger" class="container">
        
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -31,7 +34,7 @@
 
         <h2>Get started:</h2>
             <ol>
-                <li>View all pitched ideas in our pitch page</li>
+                <li>View all blogs ideas in our blog page</li>
                 <li>To get access to comment sign up if knew to our family</li>
                 <li>Or you can login to your account</li>
                 <li>Cheers Mate!!</li>
@@ -41,23 +44,23 @@
 
         <h2>Get started:</h2>
             <ol>
-                <li>View all pitched ideas in our pitch page</li>
+                <li>View all blogs ideas in our blog page</li>
                 <li>To get access to comment sign up if knew to our family</li>
                 <li>Or you can login to your account</li>
                 <li>Cheers Mate!!</li>
         {%endif%}
                 {%if current_user.is_authenticated%}
-                <h4 class="text-left"><a class="btn btn-success" href="{{url_for('main.new_pitch')}}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Pitch Your Project</a></h4>
+                <h4 class="text-left"><a class="btn btn-success" href="{{url_for('main.new_blog')}}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Post Blog</a></h4>
                 {% endif %}
           {{ macro.displayCategoryList(categories) }}
         </div>
-        <div class="panel">
-        {{ macro.displayPitches(pitches) }}
+        <div class="wells" s>
+        {{ macro.displayBlogs(blogs) }}
 
         </div>
 <!-- {% endblock %} -->
     </div>
 </div>
- 
+</main>
 </body>
 </html>
